@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScheduleNet", "ScheduleNet\ScheduleNet.csproj", "{2C9C9600-FA05-4968-AA3E-C18B3F7E3118}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "ScheduleNetData", "ScheduleNetData\ScheduleNetData.sqlproj", "{558F0CA6-C9A3-46FF-A1B3-77FC22B84A78}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2C9C9600-FA05-4968-AA3E-C18B3F7E3118}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C9C9600-FA05-4968-AA3E-C18B3F7E3118}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C9C9600-FA05-4968-AA3E-C18B3F7E3118}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C9C9600-FA05-4968-AA3E-C18B3F7E3118}.Release|Any CPU.Build.0 = Release|Any CPU
+		{558F0CA6-C9A3-46FF-A1B3-77FC22B84A78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{558F0CA6-C9A3-46FF-A1B3-77FC22B84A78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{558F0CA6-C9A3-46FF-A1B3-77FC22B84A78}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{558F0CA6-C9A3-46FF-A1B3-77FC22B84A78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{558F0CA6-C9A3-46FF-A1B3-77FC22B84A78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{558F0CA6-C9A3-46FF-A1B3-77FC22B84A78}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {76A2D781-DCEF-466F-9022-17B04336B2BB}
+	EndGlobalSection
+EndGlobal
