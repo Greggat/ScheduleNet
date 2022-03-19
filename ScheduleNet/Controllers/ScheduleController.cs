@@ -19,7 +19,7 @@ namespace ScheduleNet.Controllers
 
         public IActionResult Create()
         {
-            return View("CreateScheduledEventView");
+            return View("Create");
         }
 
         [HttpPost]
