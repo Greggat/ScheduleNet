@@ -7,4 +7,6 @@
     [OtherEmail] NVARCHAR(320) NOT NULL, 
     [EventType] TINYINT NULL, 
     [EventStage] TINYINT NULL DEFAULT 1 --1 is Created Stage
-)
+, 
+    [EventTitle] NVARCHAR(50) NULL, 
+    [EventDesc] NVARCHAR(300) NULL)

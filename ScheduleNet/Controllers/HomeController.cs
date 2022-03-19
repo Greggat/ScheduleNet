@@ -6,10 +6,12 @@ namespace ScheduleNet.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IConfiguration _config;
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IConfiguration config, ILogger<HomeController> logger)
         {
+            _config = config;
             _logger = logger;
         }
 

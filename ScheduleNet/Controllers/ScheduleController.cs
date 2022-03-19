@@ -5,6 +5,13 @@ namespace ScheduleNet.Controllers
 {
     public class ScheduleController : Controller
     {
+        IConfiguration _config;
+
+        public ScheduleController(IConfiguration config)
+        {
+            _config = config;
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -20,7 +27,6 @@ namespace ScheduleNet.Controllers
         {
             //Create the event
             Guid guid = Guid.NewGuid();
-
 
             //Notify the creator & requestee via email
 

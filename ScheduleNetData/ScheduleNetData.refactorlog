@@ -14,4 +14,25 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="[RequestedDate]" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="cb0c45c4-188f-4580-bf03-2f692bb18d93" ChangeDateTime="03/19/2022 17:58:53">
+    <Property Name="ElementName" Value="[dbo].[ScheduledEvents].[Desc]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ScheduledEvents]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Description" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="086f1b96-fb12-4305-9558-f69f31781efb" ChangeDateTime="03/19/2022 17:59:09">
+    <Property Name="ElementName" Value="[dbo].[ScheduledEvents].[Title]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ScheduledEvents]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="EventTitle" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="332935cf-c421-46e5-a6db-28dd24606bdd" ChangeDateTime="03/19/2022 17:59:13">
+    <Property Name="ElementName" Value="[dbo].[ScheduledEvents].[Description]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ScheduledEvents]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="EventDesc" />
+  </Operation>
 </Operations>
