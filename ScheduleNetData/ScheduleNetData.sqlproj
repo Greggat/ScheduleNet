@@ -71,6 +71,7 @@
     <Build Include="dbo\Stored Procedures\CreateScheduledEvent.sql" />
     <Build Include="dbo\Stored Procedures\GetRequestedDatesByScheduledEventsId.sql" />
     <Build Include="dbo\Stored Procedures\InsertRequestedDate.sql" />
+    <Build Include="dbo\Stored Procedures\GetScheduledEvent.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="ScheduleNetData.refactorlog" />

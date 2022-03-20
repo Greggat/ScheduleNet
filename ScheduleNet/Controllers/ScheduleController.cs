@@ -14,30 +14,34 @@ namespace ScheduleNet.Controllers
 
         public IActionResult Index()
         {
+            //TODO: Create About or forward to creation page
             return View();
         }
 
         public IActionResult Create()
         {
-            return View("Create");
+            return View();
         }
 
         [HttpPost]
-        public IActionResult Create(CreateScheduledEventViewModel model)
+        public async Task<IActionResult> Create(CreateScheduledEventViewModel model)
         {
             //Create the event
             Guid guid = Guid.NewGuid();
+            ScheduledEvent scheduledEvent = new(guid, model.Type, model.CreatorEmail, model.OtherEmail, model.Name, model.Description);
+            //TODO: await DataManager.CreateEvent(...)
 
             //Notify the creator & requestee via email
 
-            //redirect to success?
-            HttpContext.Response.Redirect($"Success?id={123}");
+            HttpContext.Response.Redirect($"Success?event={guid}");
             return Content(model.CreatorEmail);
         }
 
-        public IActionResult Success(ulong id)
+        public IActionResult Success(Guid eventId)
         {
-            return Content($"Success! {id}");
+            //TODO: Create View for Success
+            //TODO: Display success page and a share-able link to the event request page
+            return Content($"Success! {eventId}");
         }
     }
 }

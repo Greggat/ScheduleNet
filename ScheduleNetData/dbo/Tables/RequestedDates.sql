@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[RequestedDates]
 (
-	[Id] INT NOT NULL PRIMARY KEY, 
-    [ScheduledEventId] INT NOT NULL REFERENCES ScheduledEvents(Id) , 
+	[Id] BIGINT NOT NULL PRIMARY KEY, 
+    [ScheduledEventId] BIGINT NOT NULL REFERENCES ScheduledEvents(Id) , 
     [RequestedDate] DATETIME NOT NULL
 )

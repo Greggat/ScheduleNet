@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ScheduleNet.Models;
+using ScheduleNet.Models.Managers;
 using System.Diagnostics;
 
 namespace ScheduleNet.Controllers
@@ -8,11 +9,13 @@ namespace ScheduleNet.Controllers
     {
         private readonly IConfiguration _config;
         private readonly ILogger<HomeController> _logger;
+        private readonly IDataManager _data;
 
-        public HomeController(IConfiguration config, ILogger<HomeController> logger)
+        public HomeController(IConfiguration config, ILogger<HomeController> logger, IDataManager data)
         {
             _config = config;
             _logger = logger;
+            _data = data;
         }
 
         public IActionResult Index()

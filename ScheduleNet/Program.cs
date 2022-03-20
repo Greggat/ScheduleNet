@@ -1,7 +1,14 @@
-var builder = WebApplication.CreateBuilder(args);
+using ScheduleNet.Models.Managers;
+using System.Reflection;
 
+#if DEBUG
+//Set the working directory to assembly path because debugger sets path to Source path by default...
+Directory.SetCurrentDirectory(Path.GetDirectoryName(Assembly.GetEntryAssembly()!.Location)!);
+#endif
+var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddTransient<IDataManager, DataManager>();
 
 var app = builder.Build();
 
