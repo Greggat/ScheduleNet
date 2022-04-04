@@ -31,12 +31,12 @@ namespace ScheduleNet.Models
         /// The name of the event
         /// </summary>
         [Display(Name = "Event Name")]
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
         ///<summary
         /// The description of the event
         /// </summary>
         [Display(Name = "Event Description")]
-        public string Description { get; set; }
+        public string Description { get; set; } = string.Empty;
     }
 }

@@ -1,15 +1,18 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ScheduleNet.Models;
+using ScheduleNet.Models.Managers;
 
 namespace ScheduleNet.Controllers
 {
     public class ScheduleController : Controller
     {
         IConfiguration _config;
+        IDataManager _data;
 
-        public ScheduleController(IConfiguration config)
+        public ScheduleController(IConfiguration config, IDataManager data)
         {
             _config = config;
+            _data = data;
         }
 
         public IActionResult Index()
@@ -30,11 +33,18 @@ namespace ScheduleNet.Controllers
             Guid guid = Guid.NewGuid();
             ScheduledEvent scheduledEvent = new(guid, model.Type, model.CreatorEmail, model.OtherEmail, model.Name, model.Description);
             //TODO: await DataManager.CreateEvent(...)
+            bool success = await _data.InsertScheduledEventAsync(scheduledEvent);
 
             //Notify the creator & requestee via email
-
-            HttpContext.Response.Redirect($"Success?event={guid}");
-            return Content(model.CreatorEmail);
+            if (success)
+            {
+                return Redirect($"Success?eventId={guid}");
+            }
+            else
+            {
+                //TODO: redirect error page?
+                return Content("Critical Error");
+            }
         }
 
         public IActionResult Success(Guid eventId)

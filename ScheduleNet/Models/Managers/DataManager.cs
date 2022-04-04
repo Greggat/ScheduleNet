@@ -54,10 +54,31 @@ namespace ScheduleNet.Models.Managers
         {
             throw new NotImplementedException();
         }
-
         public async Task<bool> InsertScheduledEventAsync(ScheduledEvent scheduledEvent)
         {
-            throw new NotImplementedException();
+            SqlCommand cmd = new("CreateScheduledEvent", _con);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            //@Guid, @EventType, @CreatorEmail, @OtherEmail, @EventTitle, @EventDesc
+            cmd.Parameters.AddWithValue("@Guid", scheduledEvent.Guid);
+            cmd.Parameters.AddWithValue("@EventType", scheduledEvent.Type);
+            cmd.Parameters.AddWithValue("@CreatorEmail", scheduledEvent.CreatorEmail);
+            cmd.Parameters.AddWithValue("@OtherEmail", scheduledEvent.OtherEmail);
+            cmd.Parameters.AddWithValue("@EventTitle", scheduledEvent.Name);
+            cmd.Parameters.AddWithValue("@EventDesc", scheduledEvent.Description);
+
+            try
+            {
+                await _con.OpenAsync();
+                var res = await cmd.ExecuteNonQueryAsync();
+                await _con.CloseAsync();
+                return res == 1;
+            }
+            catch (Exception e)
+            { 
+                _log.LogCritical(e.ToString());
+                return false;
+            }
         }
     }
 }

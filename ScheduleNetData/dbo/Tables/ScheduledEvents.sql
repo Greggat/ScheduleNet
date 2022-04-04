@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [dbo].[ScheduledEvents]
 (
-	[Id] BIGINT NOT NULL PRIMARY KEY, 
-    [Guid] NCHAR(36) NOT NULL, 
+	[Id] BIGINT NOT NULL PRIMARY KEY IDENTITY, 
+    [Guid] UNIQUEIDENTIFIER NOT NULL, 
     [ConfirmedDate] DATETIME NULL, 
     [CreatorEmail] NVARCHAR(320) NOT NULL, 
     [OtherEmail] NVARCHAR(320) NOT NULL, 
