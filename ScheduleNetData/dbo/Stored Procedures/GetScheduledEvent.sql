@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[GetScheduledEvent]
+﻿CREATE PROCEDURE [dbo].[GetScheduledEventByGuid]
 	@Guid nchar(36)
 AS
 	SELECT Guid, EventType, CreatorEmail, OtherEmail, EventTitle, EventDesc

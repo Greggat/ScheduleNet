@@ -35,4 +35,11 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="EventDesc" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="22346583-8524-4a2e-a574-9baf8c94226f" ChangeDateTime="04/05/2022 20:37:28">
+    <Property Name="ElementName" Value="[dbo].[GetScheduledEvent]" />
+    <Property Name="ElementType" Value="SqlProcedure" />
+    <Property Name="ParentElementName" Value="[dbo]" />
+    <Property Name="ParentElementType" Value="SqlSchema" />
+    <Property Name="NewName" Value="[GetScheduledEventByGuid]" />
+  </Operation>
 </Operations>
