@@ -2,9 +2,9 @@
 using ScheduleNet.Models.Enums;
 using System.ComponentModel.DataAnnotations;
 
-namespace ScheduleNet.Models
+namespace ScheduleNet.Models.Scheduler
 {
-    public class CreateScheduledEventViewModel
+    public class ScheduleCreateViewModel
     {
         ///<summary>
         /// The email of the creator of the event

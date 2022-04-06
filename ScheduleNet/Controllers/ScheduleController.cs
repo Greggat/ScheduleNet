@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ScheduleNet.Models;
+using ScheduleNet.Models.Scheduler;
 using ScheduleNet.Models.Managers;
 
 namespace ScheduleNet.Controllers
@@ -27,12 +28,10 @@ namespace ScheduleNet.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(CreateScheduledEventViewModel model)
+        public async Task<IActionResult> Create(ScheduleCreateViewModel model)
         {
-            //Create the event
             Guid guid = Guid.NewGuid();
             ScheduledEvent scheduledEvent = new(guid, model.Type, model.CreatorEmail, model.OtherEmail, model.Name, model.Description);
-            //TODO: await DataManager.CreateEvent(...)
             bool success = await _data.InsertScheduledEventAsync(scheduledEvent);
 
             //Notify the creator & requestee via email
@@ -42,8 +41,7 @@ namespace ScheduleNet.Controllers
             }
             else
             {
-                //TODO: redirect error page?
-                return Content("Critical Error");
+                return View("Error", new ErrorViewModel());
             }
         }
 
@@ -51,7 +49,25 @@ namespace ScheduleNet.Controllers
         {
             //TODO: Create View for Success
             //TODO: Display success page and a share-able link to the event request page
-            return Content($"Success! {eventId}");
+            ViewBag.Guid = eventId;
+            return View();
+        }
+
+        public async Task<IActionResult> Request(Guid eventId)
+        {
+            var ev = await _data.GetScheduledEventByGuidAsync(eventId);
+            if (ev == null)
+                return View("Error", new ErrorViewModel { ErrorMessage="The event you are trying to access does not exist!"});
+
+            ViewBag.EventName = ev.Name;
+
+            ScheduleRequestViewModel model = new ScheduleRequestViewModel
+            {
+                Name = ev.Name,
+                Description = ev.Description,
+                Type = ev.Type,
+            };
+            return View(model);
         }
     }
 }

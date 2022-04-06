@@ -76,7 +76,7 @@ namespace ScheduleNet.Models.Managers
 
         public async Task<ScheduledEvent> GetScheduledEventByGuidAsync(Guid guid)
         {
-            SqlCommand cmd = new("CreateScheduledEvent", _con);
+            SqlCommand cmd = new("GetScheduledEventByGuid", _con);
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.AddWithValue("@Guid", guid);
@@ -95,7 +95,7 @@ namespace ScheduleNet.Models.Managers
                 //Guid, EventType, CreatorEmail, OtherEmail, EventTitle, EventDesc
                 ScheduledEvent ev = new(
                     dr.GetGuid("Guid"),
-                    (ScheduledEventType)dr.GetByte("Type"),
+                    (ScheduledEventType)dr.GetByte("EventType"),
                     dr.GetString("CreatorEmail"),
                     dr.GetString("OtherEmail"),
                     !await dr.IsDBNullAsync("EventTitle") ? dr.GetString("EventTitle") : string.Empty,
