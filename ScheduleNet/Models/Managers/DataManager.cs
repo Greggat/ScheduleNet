@@ -32,7 +32,7 @@ namespace ScheduleNet.Models.Managers
                 SqlDataReader dr = await cmd.ExecuteReaderAsync();
 
                 List<DateTime> dates = new();
-                while(await dr.ReadAsync())
+                while (await dr.ReadAsync())
                 {
                     dates.Add(dr.GetDateTime("RequestedDate"));
                 }
@@ -41,7 +41,7 @@ namespace ScheduleNet.Models.Managers
             }
             catch (Exception e)
             {
-                if(_con.State != ConnectionState.Closed)
+                if (_con.State != ConnectionState.Closed)
                 {
                     await _con.CloseAsync();
                 }
@@ -86,7 +86,7 @@ namespace ScheduleNet.Models.Managers
                 await _con.OpenAsync();
                 SqlDataReader dr = await cmd.ExecuteReaderAsync();
 
-                if(!dr.Read())
+                if (!dr.Read())
                 {
                     //No event with that GUID exists
                     return null;
@@ -117,7 +117,7 @@ namespace ScheduleNet.Models.Managers
                 return null;
             }
         }
-        
+
         public async Task<bool> InsertScheduledEventAsync(ScheduledEvent scheduledEvent)
         {
             SqlCommand cmd = new("CreateScheduledEvent", _con);
@@ -139,7 +139,30 @@ namespace ScheduleNet.Models.Managers
                 return res == 1;
             }
             catch (Exception e)
-            { 
+            {
+                _log.LogCritical(e.ToString());
+                return false;
+            }
+        }
+
+        public async Task<bool> UpdateScheduledEventStage(Guid scheduleEventGuid, ScheduledEventStage stage)
+        {
+            SqlCommand cmd = new("UpdateScheduledEventStage", _con);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            //@Guid, @EventType, @CreatorEmail, @OtherEmail, @EventTitle, @EventDesc
+            cmd.Parameters.AddWithValue("@Guid", scheduleEventGuid);
+            cmd.Parameters.AddWithValue("@EventStage", stage);
+
+            try
+            {
+                await _con.OpenAsync();
+                var res = await cmd.ExecuteNonQueryAsync();
+                await _con.CloseAsync();
+                return res == 1;
+            }
+            catch (Exception e)
+            {
                 _log.LogCritical(e.ToString());
                 return false;
             }
